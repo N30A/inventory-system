@@ -1,0 +1,25 @@
+bin/
+obj/
+*.csproj.user
+
+/packages/
+
+/_ReSharper.Caches/
+.env
+# Drawio
+*.bkp
+
+# Rider
+.idea
+riderModule.iml
+
+# Visual Studio
+.vs
+
+# VS Code
+.vscode
+
+# OS
+.DS_Store
+Thumbs.db
+
