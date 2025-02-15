@@ -14,7 +14,7 @@ BEGIN
 		CategoryID INT IDENTITY PRIMARY KEY,
 		Name NVARCHAR(100) NOT NULL UNIQUE,
 		Description NVARCHAR(250),
-		ParentCategoryID INT NULL REFERENCES Category(CategoryID) ON DELETE SET NULL
+		ParentCategoryID INT NULL REFERENCES Category(CategoryID)
 	);
 END
 
