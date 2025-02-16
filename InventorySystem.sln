@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{8BCCCF24-3C71-429B-A742-8CB1AB24F125}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{91C2C93E-942A-4ED5-BA59-94A4246640E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{FD853DE0-550E-40D6-A628-002821253921}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{8BCCCF24-3C71-429B-A742-8CB1AB24F125}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BCCCF24-3C71-429B-A742-8CB1AB24F125}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BCCCF24-3C71-429B-A742-8CB1AB24F125}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91C2C93E-942A-4ED5-BA59-94A4246640E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91C2C93E-942A-4ED5-BA59-94A4246640E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91C2C93E-942A-4ED5-BA59-94A4246640E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91C2C93E-942A-4ED5-BA59-94A4246640E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD853DE0-550E-40D6-A628-002821253921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD853DE0-550E-40D6-A628-002821253921}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD853DE0-550E-40D6-A628-002821253921}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD853DE0-550E-40D6-A628-002821253921}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
