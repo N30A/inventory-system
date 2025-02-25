@@ -23,7 +23,6 @@ public static class Program
         builder.Services.AddApiVersioning(options =>
         {
             options.DefaultApiVersion = ApiVersion.Default;
-            options.AssumeDefaultVersionWhenUnspecified = true;
             options.ReportApiVersions = true;
             options.ApiVersionReader = new UrlSegmentApiVersionReader();
         }).AddApiExplorer(options =>
