@@ -1,3 +1,5 @@
+using Asp.Versioning;
+
 namespace WebApi;
 
 public static class Program
@@ -16,6 +18,19 @@ public static class Program
         builder.Services.AddControllers();
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();
+        
+        // https://weblogs.asp.net/ricardoperes/asp-net-core-api-versioning
+        builder.Services.AddApiVersioning(options =>
+        {
+            options.DefaultApiVersion = ApiVersion.Default;
+            options.AssumeDefaultVersionWhenUnspecified = true;
+            options.ReportApiVersions = true;
+            options.ApiVersionReader = new UrlSegmentApiVersionReader();
+        }).AddApiExplorer(options =>
+        {
+            options.GroupNameFormat = "'v'VVV";
+            options.SubstituteApiVersionInUrl = true;
+        });
         
         var app = builder.Build();
         
