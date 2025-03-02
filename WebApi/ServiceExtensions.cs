@@ -1,4 +1,6 @@
 using System.Data;
+using Data.Repositories;
+using Data.Repositories.Interfaces;
 using Microsoft.Data.SqlClient;
 
 namespace WebApi;
@@ -32,6 +34,12 @@ public static class ServiceExtensions
     {
         string connectionString = BuildConnectionString(configuration, environment);
         services.AddScoped<IDbConnection>(sc => new SqlConnection(connectionString));
+        return services;
+    }
+    
+    public static IServiceCollection AddRepositories(this IServiceCollection services)
+    {
+        services.AddScoped<ISuppliersRepository, SuppliersRepository>();
         return services;
     }
 }
