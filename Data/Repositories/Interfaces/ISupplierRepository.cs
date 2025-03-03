@@ -2,7 +2,7 @@ using Data.Models;
 
 namespace Data.Repositories.Interfaces;
 
-public interface ISuppliersRepository
+public interface ISupplierRepository
 {
     Task<IEnumerable<Supplier>> GetAllAsync();
     Task<Supplier?> GetByIdAsync(int supplierId);

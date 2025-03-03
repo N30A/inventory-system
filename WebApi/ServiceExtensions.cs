@@ -39,7 +39,7 @@ public static class ServiceExtensions
     
     public static IServiceCollection AddRepositories(this IServiceCollection services)
     {
-        services.AddScoped<ISuppliersRepository, SuppliersRepository>();
+        services.AddScoped<ISupplierRepository, SupplierRepository>();
         return services;
     }
 }

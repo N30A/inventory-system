@@ -5,11 +5,11 @@ using Data.Repositories.Interfaces;
 
 namespace Data.Repositories;
 
-public class SuppliersRepository : ISuppliersRepository
+public class SupplierRepository : ISupplierRepository
 {
     private readonly IDbConnection _connection;
 
-    public SuppliersRepository(IDbConnection connection)
+    public SupplierRepository(IDbConnection connection)
     {
         _connection = connection;
     }
