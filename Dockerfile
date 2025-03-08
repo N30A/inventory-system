@@ -36,7 +36,7 @@ RUN --mount=type=cache,id=nuget,target=/root/.nuget/packages \
 # runtime dependencies for the application. This often uses a different base
 # image from the build stage where the necessary files are copied from the build
 # stage.
-#
+
 # The example below uses an aspnet alpine image as the foundation for running the app.
 # It will also use whatever happens to be the most recent version of that tag when you
 # build your Dockerfile. If reproducibility is important, consider using a more specific
@@ -44,6 +44,9 @@ RUN --mount=type=cache,id=nuget,target=/root/.nuget/packages \
 # or SHA (e.g., mcr.microsoft.com/dotnet/aspnet@sha256:f3d99f54d504a21d38e4cc2f13ff47d67235efeeb85c109d3d1ff1808b38d034).
 FROM mcr.microsoft.com/dotnet/aspnet:9.0-alpine AS final
 WORKDIR /app
+
+RUN apk add --no-cache icu-libs
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 
 # Copy everything needed to run the app from the "build" stage.
 COPY --from=build /app .
