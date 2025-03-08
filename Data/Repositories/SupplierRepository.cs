@@ -38,6 +38,18 @@ public class SupplierRepository : ISupplierRepository
         return supplier;
     }
 
+    public async Task<Supplier?> GetByNameAsync(string supplierName)
+    {
+        const string query = """
+             SELECT SupplierID, Name, Email, Phone, Address
+             FROM dbo.Supplier
+             WHERE DeletedAt IS NULL AND Name = @supplierName;
+         """;
+        
+        var supplier = await _connection.QuerySingleOrDefaultAsync<Supplier>(query, new { supplierName });
+        return supplier;
+    }
+
     public async Task<bool> AddAsync(Supplier supplier)
     {
         const string query = """
