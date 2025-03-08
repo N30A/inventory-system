@@ -24,7 +24,7 @@ public class SupplierService : ISupplierService
         
         var supplierDtos = suppliers.Select(supplier => new SupplierDto
         {
-            SupplierId = supplier.SupplierId,
+            Id = supplier.SupplierId,
             Name = supplier.Name,
             Address = supplier.Address,
             Phone = supplier.Phone,
@@ -44,7 +44,7 @@ public class SupplierService : ISupplierService
 
         var supplierDto = new SupplierDto
         {
-            SupplierId = supplier.SupplierId,
+            Id = supplier.SupplierId,
             Name = supplier.Name,
             Address = supplier.Address,
             Phone = supplier.Phone,
@@ -64,7 +64,7 @@ public class SupplierService : ISupplierService
 
         var supplierDto = new SupplierDto
         {
-            SupplierId = supplier.SupplierId,
+            Id = supplier.SupplierId,
             Name = supplier.Name,
             Address = supplier.Address,
             Phone = supplier.Phone,
@@ -84,7 +84,7 @@ public class SupplierService : ISupplierService
         
         var supplier = new Supplier
         {
-            SupplierId = supplierDto.SupplierId,
+            SupplierId = supplierDto.Id,
             Name = supplierDto.Name,
             Address = supplierDto.Address,
             Phone = supplierDto.Phone,
@@ -102,15 +102,15 @@ public class SupplierService : ISupplierService
 
     public async Task<Result<bool>> UpdateAsync(SupplierDto supplierDto)
     {
-        var existingSupplier = await _supplierRepository.GetByIdAsync(supplierDto.SupplierId);
+        var existingSupplier = await _supplierRepository.GetByIdAsync(supplierDto.Id);
         if (existingSupplier == null)
         {
-            return Result<bool>.Failure($"The supplier with id '{supplierDto.SupplierId}' was not found");
+            return Result<bool>.Failure($"The supplier with id '{supplierDto.Id}' was not found");
         }
         
         var supplier = new Supplier
         {
-            SupplierId = supplierDto.SupplierId,
+            SupplierId = supplierDto.Id,
             Name = supplierDto.Name,
             Address = supplierDto.Address,
             Phone = supplierDto.Phone,
@@ -120,7 +120,7 @@ public class SupplierService : ISupplierService
         bool status = await _supplierRepository.UpdateAsync(supplier);
         if (!status)
         {
-            return Result<bool>.Failure($"Failed to update supplier with id '{supplierDto.SupplierId}'");
+            return Result<bool>.Failure($"Failed to update supplier with id '{supplierDto.Id}'");
         }
         
         return Result<bool>.Success(status);
