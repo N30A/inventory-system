@@ -16,6 +16,7 @@ public static class Program
 
         builder.Services.AddDatabase(builder.Configuration, builder.Environment);
         builder.Services.AddRepositories();
+        builder.Services.AddServices();
         builder.Services.AddControllers();
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();

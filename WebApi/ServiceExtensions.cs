@@ -2,6 +2,8 @@ using System.Data;
 using Data.Repositories;
 using Data.Repositories.Interfaces;
 using Microsoft.Data.SqlClient;
+using Services;
+using Services.Interfaces;
 
 namespace WebApi;
 
@@ -40,6 +42,12 @@ public static class ServiceExtensions
     public static IServiceCollection AddRepositories(this IServiceCollection services)
     {
         services.AddScoped<ISupplierRepository, SupplierRepository>();
+        return services;
+    }
+    
+    public static IServiceCollection AddServices(this IServiceCollection services)
+    {
+        services.AddScoped<ISupplierService, SupplierService>();
         return services;
     }
 }
