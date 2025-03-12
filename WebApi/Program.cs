@@ -17,7 +17,10 @@ public static class Program
         builder.Services.AddDatabase(builder.Configuration, builder.Environment);
         builder.Services.AddRepositories();
         builder.Services.AddServices();
-        builder.Services.AddControllers();
+        builder.Services.AddControllers().ConfigureApiBehaviorOptions(options =>
+        {
+            options.SuppressModelStateInvalidFilter = true;
+        });
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();
         
