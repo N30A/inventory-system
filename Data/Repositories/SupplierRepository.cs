@@ -50,15 +50,16 @@ public class SupplierRepository : ISupplierRepository
         return supplier;
     }
 
-    public async Task<bool> AddAsync(Supplier supplier)
+    public async Task<int?> AddAsync(Supplier supplier)
     {
+        // https://stackoverflow.com/questions/8270205/how-do-i-perform-an-insert-and-return-inserted-identity-with-dapper
         const string query = """
              INSERT INTO dbo.Supplier(Name, Email, Phone, Address)
+             OUTPUT inserted.SupplierID
              VALUES(@Name, @Email, @Phone, @Address);
          """;
         
-        int rowsAffected = await _connection.ExecuteAsync(query, supplier);
-        return rowsAffected == 1;
+        return await _connection.QuerySingleOrDefaultAsync<int?>(query, supplier);
     }
 
     public async Task<bool> UpdateAsync(Supplier supplier)
