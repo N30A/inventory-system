@@ -115,6 +115,16 @@ public class SuppliersController : ControllerBase
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> DeleteSupplierById(int id)
     {
-        throw new NotImplementedException();
+        var deleted = await _supplierService.DeleteAsync(id);
+        if (!deleted.Status)
+        {
+            return NotFound(new Response<SupplierDto?>
+            {
+                Data = null,
+                Message = deleted.Message
+            });
+        }
+        
+        return NoContent();
     }
 }
