@@ -74,30 +74,29 @@ public class SupplierService : ISupplierService
         return Result<SupplierDto?>.Success(supplierDto);
     }
 
-    public async Task<Result<bool>> AddAsync(SupplierDto supplierDto)
+    public async Task<Result<int?>> AddAsync(CreateSupplierDto supplierDto)
     {   
         var existingSupplier = await _supplierRepository.GetByNameAsync(supplierDto.Name);
         if (existingSupplier != null)
         {
-            return Result<bool>.Failure($"A supplier with name '{supplierDto.Name}' already exists");
+            return Result<int?>.Failure($"A supplier with name '{supplierDto.Name}' already exists");
         }
         
         var supplier = new Supplier
         {
-            SupplierId = supplierDto.Id,
             Name = supplierDto.Name,
             Address = supplierDto.Address,
             Phone = supplierDto.Phone,
             Email = supplierDto.Email
         };
         
-        bool status = await _supplierRepository.AddAsync(supplier);
-        if (!status)
+        int? id = await _supplierRepository.AddAsync(supplier);
+        if (id == null)
         {
-            return Result<bool>.Failure("Failed to add the supplier.");
+            return Result<int?>.Failure("Failed to add the supplier");
         }
         
-        return Result<bool>.Success(status);
+        return Result<int?>.Success(id);
     }
 
     public async Task<Result<bool>> UpdateAsync(SupplierDto supplierDto)
